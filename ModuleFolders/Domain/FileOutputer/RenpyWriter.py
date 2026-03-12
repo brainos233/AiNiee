@@ -77,14 +77,14 @@ class RenpyWriter(BaseTranslatedWriter):
         3. 去除 Msg 开头可能由 AI 添加的一个空格。
         """
         # 仅匹配开头的 [人名]
-        if text.startswith("["):
-            end_pos = text.find("]")
-            if end_pos > 1:  # 排除空名字 []
-                name = text[1:end_pos]
-                msg = text[end_pos + 1:]
-                if len(msg) > 0 and msg[0] == ' ':
-                    msg = msg[1:]
-                return name, msg
+        # if text.startswith("["):
+        #     end_pos = text.find("]")
+        #     if end_pos > 1:  # 排除空名字 []
+        #         name = text[1:end_pos]
+        #         msg = text[end_pos + 1:]
+        #         if len(msg) > 0 and msg[0] == ' ':
+        #             msg = msg[1:]
+        #         return name, msg
         # 仅匹配开头的 【人名】
         if text.startswith("【"):
             end_pos = text.find("】")

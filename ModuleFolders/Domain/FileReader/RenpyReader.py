@@ -273,7 +273,7 @@ class RenpyReader(BaseSourceReader):
             # 上下文注入：如果有名字，拼接到原文前
             if name_data and name_data['name']:
                 name = name_data['name']
-                source_text = f"[{name}]{source_text}"
+                source_text = f"【{name}】{source_text}"
                 extra["original_name"] = name
                 extra["name_is_translated"] = name_data['should_translate']
 
