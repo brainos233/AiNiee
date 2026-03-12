@@ -53,22 +53,10 @@ jobs:
           # 压缩 dist\AiNiee 目录，updater 会智能查找 AiNiee.exe 所在目录
           Compress-Archive -Path "dist\AiNiee" -DestinationPath "AiNiee-Beta.zip"
 
-      - name: Delete release
-        uses: dev-drprasad/delete-tag-and-release@v1.1
+      - name: Create Artifact
+        uses: actions/upload-artifact@v7.0.0
         with:
-          tag_name: Beta
-          delete_release: true
-          github_token: ${{ secrets.AINIEE }}
-        continue-on-error: true
-
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: Beta
-          name: AiNiee-Beta 开发测试版本，由最新源码自动打包
-          draft: false
-          prerelease: true
-          generate_release_notes: true
-          files: AiNiee-Beta.zip
-          token: ${{ secrets.AINIEE }}
+          name: AiNiee-Beta
+          path: |
+            AiNiee-Beta.zip
+          retention-days: 7
